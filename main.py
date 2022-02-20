@@ -71,7 +71,7 @@ class Coordinate:
     def hashcode(self):
         return hash(self.x) + hash(self.y)
 
-class Grid:
+class Grid: #incomplete
     coords = {}
     gridOwner = -1
     gridSize = 10
@@ -102,6 +102,35 @@ class Grid:
                 return True
         else:
             return False
+    
+    def isFree(self,*args):
+        alpha = "ABCDEFGHIJ"
+        if(len(args) == 2):
+            xloc = -1
+            for i in range(0,10):
+                if(alpha[i]==args[0]):
+                    xloc = i
+                    break
+            if(xloc < 0 or xloc >= 10 or args[1] < 0 or args[1] > gridSize):
+                return 2
+            else:
+                if((self.coords).get(args[0]+str(args[1]))) is not NONE:
+                    return 1
+                else:
+                    return 0
+        else:
+            xloc = -1
+            for i in range(0,10):
+                if(alpha[i]==args[0]):
+                    xloc = i
+                    break
+            if(xloc < 0 or xloc >= 10 or int(args[1]) < 0 or int(args[1]) > gridSize):
+                return 2
+            else:
+                if((self.coords).get(args[0]+args[1])) is not NONE:
+                    return 1
+                else:
+                    return 0
 
     def fire(self, coordinate):
         if(self.coords.get(coordinate.get()) is not None):
@@ -111,5 +140,68 @@ class Grid:
             else:
                 return 0
         else:
-            self.coords.update({coordinate.get(), "X"})
+            self.coords.update({coordinate.get(), "O"})
         return 1
+
+class ProbabilityMap:
+    p = False
+    s = False
+    d = False
+    b = False
+    a = False
+    highest = -1
+    probabilities = {}
+    userGrid = Grid(-1)
+
+    # def __init__(self,g):
+    #     self.usergrid = g
+    #     p = True
+    #     s = True
+    #     d = True
+    #     b = True
+    #     a = True
+    #     assesMap()
+
+    # def assesMap(self):
+    
+    # def sunken(s):
+    #     name = s.getName()
+    #     if(name == "Patrol Boat"):
+	# 		self.p = False
+    #     elif(name=="Destroyer"):
+	# 		self.d = False
+    #     elif(name=="Submarine"):
+	# 		self.s = False
+	# 	elif(name=="Battleship"):
+	# 		self.b = False
+	# 	elif(name=="Aircraft Carrier"):
+	# 		self.a = False
+	# 	else:
+	# 		print("ERROR! Invalid ship name on ProbabilityMap");
+
+    def assessMap():
+        sizes = (this.userGrid).getShipSizes()
+        highest = 0
+        for i in range((this.userGrid).getGridSize()):
+            for j in rnage((this.userGrid).getGridSize()):
+                coord = Coordinate(i, j)
+                probability = 0
+
+                if(userGrid.probCheck(coord)==0):
+                    for k in range(sizes.length):
+                        if(checkDirection(userGrid, sizes[k], i, j, "left")):
+                            probability += 1
+                        if(checkDirection(userGrid, sizes[k], i, j, "right")):
+                            probability += 1
+                        if(checkDirection(userGrid, sizes[k], i, j, "up")):
+                            probability += 1
+                        if(checkDirection(userGrid, sizes[k], i, j, "down")):
+                            probability += 1
+                    if(isEdge(i, j)):
+                        probability *= 1.25
+                    elif(isCorner(i, j)):
+                        probability *= 1.5
+                    highest = max(probability, highest)
+                    Alphabet = "ABCDEFGHIJKLMNOPQGRSTUVWXYZ"
+                    probability.put(Coordinate(Alphabet[i],j), probability)
+        
