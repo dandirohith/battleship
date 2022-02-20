@@ -187,15 +187,15 @@ class ProbabilityMap:
                 coord = Coordinate(i, j)
                 probability = 0
 
-                if(userGrid.probCheck(coord)==0):
+                if(self.userGrid.probCheck(coord)==0):
                     for k in range(sizes.length):
-                        if(checkDirection(userGrid, sizes[k], i, j, "left")):
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "left")):
                             probability += 1
-                        if(checkDirection(userGrid, sizes[k], i, j, "right")):
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "right")):
                             probability += 1
-                        if(checkDirection(userGrid, sizes[k], i, j, "up")):
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "up")):
                             probability += 1
-                        if(checkDirection(userGrid, sizes[k], i, j, "down")):
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "down")):
                             probability += 1
                     if(isEdge(i, j)):
                         probability *= 1.25
