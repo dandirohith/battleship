@@ -164,26 +164,26 @@ class ProbabilityMap:
 
     # def assesMap(self):
     
-    # def sunken(s):
-    #     name = s.getName()
-    #     if(name == "Patrol Boat"):
-	# 		self.p = False
-    #     elif(name=="Destroyer"):
-	# 		self.d = False
-    #     elif(name=="Submarine"):
-	# 		self.s = False
-	# 	elif(name=="Battleship"):
-	# 		self.b = False
-	# 	elif(name=="Aircraft Carrier"):
-	# 		self.a = False
-	# 	else:
-	# 		print("ERROR! Invalid ship name on ProbabilityMap");
+    def sunken(self, s):
+        name = s.getName()
+        if(name == "Patrol Boat"):
+			self.p = False
+        elif(name=="Destroyer"):
+			self.d = False
+        elif(name=="Submarine"):
+			self.s = False
+		elif(name=="Battleship"):
+			self.b = False
+		elif(name=="Aircraft Carrier"):
+			self.a = False
+		else:
+			print("ERROR! Invalid ship name on ProbabilityMap");
 
-    def assessMap():
-        sizes = (this.userGrid).getShipSizes()
+    def assessMap(self):
+        sizes = (self.userGrid).getShipSizes()
         highest = 0
-        for i in range((this.userGrid).getGridSize()):
-            for j in rnage((this.userGrid).getGridSize()):
+        for i in range((self.userGrid).getGridSize()):
+            for j in range((self.userGrid).getGridSize()):
                 coord = Coordinate(i, j)
                 probability = 0
 
