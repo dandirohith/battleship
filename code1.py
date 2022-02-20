@@ -1,3 +1,4 @@
+from pickle import FALSE
 import random
 from re import A
 
@@ -143,20 +144,62 @@ class Grid:
             return 1
 
 class ProbabilityMap:
-    p,s,d,b,a 
+    p = False
+    s = False
+    d = False
+    b = False
+    a = False
     highest = -1
     probabilities = {}
-    usergrid = grid()
-
-    def __init__(self,g):
-        self.usergrid = g
-        p = True
-        s = True
-        d = True
-        b = True
-        a = True
-        assesMap()
-
-    def assesMap(self):
-        
+    userGrid = Grid(-1)
     
+    def isEdge(self,i,j):
+        return ((i == 0 or 
+				i == self.userGrid.getGridSize()-1  or
+				j == 0 or 
+				j == self.userGrid.getGridSize()-1)
+			and
+			not(i == 0 and j == 0) or
+			(i == 0 and j == self.userGrid.getGridSize()-1) or
+			(i == self.userGrid.getGridSize()-1 and j == 0) or
+			(i == self.userGrid.getGridSize()-1 and j == self.userGrid.getGridSize()-1))
+    
+    def isCorner(self,i,j):
+        return ((i == 0 and j == 0) or
+				(i == 0 and j == self.userGrid.getGridSize()-1) or
+				(i == self.userGrid.getGridSize()-1 and j == 0) or
+				(i == self.userGrid.getGridSize()-1 and j == self.userGrid.getGridSize()-1))
+    
+    def __init__(self, g):
+        self.p = True
+        self.s = True
+        self.d = True
+        self.b = True
+        self.a = True
+        self.userGrid = g
+        assesMap();
+
+    def assessMap(self):
+        sizes = (self.userGrid).getShipSizes()
+        highest = 0
+        for i in range((self.userGrid).getGridSize()):
+            for j in range((self.userGrid).getGridSize()):
+                coord = Coordinate(i, j)
+                probability = 0
+
+                if(self.userGrid.probCheck(coord)==0):
+                    for k in range(sizes.length):
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "left")):
+                            probability += 1
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "right")):
+                            probability += 1
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "up")):
+                            probability += 1
+                        if(checkDirection(self.userGrid, sizes[k], i, j, "down")):
+                            probability += 1
+                    if(isEdge(i, j)):
+                        probability *= 1.25
+                    elif(isCorner(i, j)):
+                        probability *= 1.5
+                    highest = max(probability, highest)
+                    Alphabet = "ABCDEFGHIJKLMNOPQGRSTUVWXYZ"
