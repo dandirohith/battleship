@@ -151,7 +151,7 @@ class ProbabilityMap:
     a = False
     highest = -1
     probabilities = {}
-    userGrid = Grid(-1)
+    userGrid = Grid.__init__(-1)
 
     # def __init__(self,g):
     #     self.usergrid = g
@@ -184,7 +184,7 @@ class ProbabilityMap:
         highest = 0
         for i in range((self.userGrid).getGridSize()):
             for j in range((self.userGrid).getGridSize()):
-                coord = Coordinate(i, j)
+                coord = Coordinate.__init__(i, j)
                 probability = 0
 
                 if(self.userGrid.probCheck(coord)==0):
@@ -203,7 +203,7 @@ class ProbabilityMap:
                         probability *= 1.5
                     highest = max(probability, highest)
                     Alphabet = "ABCDEFGHIJKLMNOPQGRSTUVWXYZ"
-                    probability.put(Coordinate(Alphabet[i],j), probability)
+                    probability.put(Coordinate.__init__(Alphabet[i],j), probability)
     
 
     def AssessMap(self):
@@ -211,89 +211,89 @@ class ProbabilityMap:
         for i in range(self.userGrid.getGridSize()):
             for j in range(self.userGrid.getGridSize()):
 				# Start at top and work our way around...
-                coord = Coordinate(i,j);
+                coord = Coordinate.__init__(i,j);
                 probability = 0;
                 if (self.userGrid.probCheck(coord) == 0): # Check current location.
 					# //Check left, up, down, right	
 					# //Patrol Boat
                     if(p==True): 
-                        if (self.userGrid.probCheck(Coordinate((i-1),j)) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i-1),j)) == 0):
                             probability= probability +1
-                        if(self.userGrid.probCheck(Coordinate((i+1),j)) == 0):
+                        if(self.userGrid.probCheck(Coordinate.__init__((i+1),j)) == 0):
                             probability= probability +1
-                        if (self.userGrid.probCheck(Coordinate((i),(j-1))) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i),(j-1))) == 0):
                             probability= probability +1
-                        if(self.userGrid.probCheck(Coordinate((i),(j+1))) == 0):
+                        if(self.userGrid.probCheck(Coordinate.__init__((i),(j+1))) == 0):
                             probability= probability +1
 					# //Destroyer
                     if(d==True):
-                        if (self.userGrid.probCheck(Coordinate((i-2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i-2),j)) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i-2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i-2),j)) == 0):
                             probability= probability +1;
-                        if (self.userGrid.probCheck(Coordinate((i+2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i+2),j)) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i+2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i+2),j)) == 0):
                             probability= probability +1;
-                        if (self.userGrid.probCheck(Coordinate((i),(j-2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j-2))) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i),(j-2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j-2))) == 0):
                             probability= probability +1;
-                        if (self.userGrid.probCheck(Coordinate((i),(j+2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j+2))) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i),(j+2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j+2))) == 0):
                             probability= probability +1;
 				
 					# //Submarine
                     if (s==True):
-                        if (self.userGrid.probCheck(Coordinate((i-2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i-1),j)) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i-2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i-1),j)) == 0):
                             probability= probability +1;    
-                        if (self.userGrid.probCheck(Coordinate((i+2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i+1),j)) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i+2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i+1),j)) == 0):
                             probability= probability +1;
-                        if (self.userGrid.probCheck(Coordinate((i),(j-2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j-1))) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i),(j-2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j-1))) == 0):
                             probability= probability +1;
-                        if (self.userGrid.probCheck(Coordinate((i),(j+2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j+1))) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i),(j+2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j+1))) == 0):
                             probability= probability +1;
 					# //Battleship
 					
                     if (b==True):    
-                    	if (self.userGrid.probCheck(Coordinate((i-3),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i-2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i-1),j)) == 0):
+                    	if (self.userGrid.probCheck(Coordinate.__init__((i-3),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i-2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i-1),j)) == 0):
                             probability= probability +1;
-                        if (self.userGrid.probCheck(Coordinate((i+3),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i+2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i+1),j)) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i+3),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i+2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i+1),j)) == 0):
 							probability= probability +1;
-                        if (self.userGrid.probCheck(Coordinate((i),(j-3))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j-2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j-1))) == 0):
+                        if (self.userGrid.probCheck(Coordinate.__init__((i),(j-3))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j-2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j-1))) == 0):
 					    	probability= probability +1;
-					    if (self.userGrid.probCheck(Coordinate((i),(j+3))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j+2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j+1))) == 0):
+					    if (self.userGrid.probCheck(Coordinate.__init__((i),(j+3))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j+2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j+1))) == 0):
 							probability= probability +1;
 					# //Aircraft carrier
 					if (a==True):
-						if (self.userGrid.probCheck(Coordinate((i-4),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i-3),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i-2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i-1),j)) == 0):
+						if (self.userGrid.probCheck(Coordinate.__init__((i-4),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i-3),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i-2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i-1),j)) == 0):
 							probability= probability +1;
-						if (self.userGrid.probCheck(Coordinate((i+4),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i+3),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i+2),j)) == 0 and
-								self.userGrid.probCheck(Coordinate((i+1),j)) == 0):
+						if (self.userGrid.probCheck(Coordinate.__init__((i+4),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i+3),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i+2),j)) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i+1),j)) == 0):
 							probability= probability +1;
-						if (self.userGrid.probCheck(Coordinate((i),(j-4))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j-3))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j-2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j-1))) == 0):
+						if (self.userGrid.probCheck(Coordinate.__init__((i),(j-4))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j-3))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j-2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j-1))) == 0):
 							probability= probability +1;
-						if (self.userGrid.probCheck(Coordinate((i),(j+4))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j+3))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j+2))) == 0 and
-								self.userGrid.probCheck(Coordinate((i),(j+1))) == 0):
+						if (self.userGrid.probCheck(Coordinate.__init__((i),(j+4))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j+3))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j+2))) == 0 and
+								self.userGrid.probCheck(Coordinate.__init__((i),(j+1))) == 0):
 							probability= probability +1;
 				# //Do we have a new highest?
                 if(isEdge(i,j)):
