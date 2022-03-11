@@ -31,16 +31,16 @@ class BattleShip:
         game = 1
         hit_count = 0
         target = "stop"
-        Carrier_Hits = 0
-        Carrier_Locations = [[]]
-        Battleship_Hits = 0
-        Battleship_Locations = [[]]
-        Cruiser_Hits = 0
-        Cruiser_Locations = [[]]
-        Submarine_Hits = 0
-        Submarine_Locations = [[]]
-        Destroyer_Hits = 0
-        Destroyer_Locations = [[]]
+        # Carrier_Hits = 0
+        # Carrier_Locations = [[]]
+        # Battleship_Hits = 0
+        # Battleship_Locations = [[]]
+        # Cruiser_Hits = 0
+        # Cruiser_Locations = [[]]
+        # Submarine_Hits = 0
+        # Submarine_Locations = [[]]
+        # Destroyer_Hits = 0
+        # Destroyer_Locations = [[]]
 
         while(game > 0):
             
@@ -193,6 +193,7 @@ class BattleShip:
                         self.y = G2
 
                         # attack at g1,g2
+                        
                         # get info of attack at g1,g2 
                         # if attack is hit
                         # update opponent_board
@@ -242,7 +243,7 @@ class BattleShip:
                             G2_Archive = G2
                             #print("Hit!")
                             hit_count += 1
-                            
+
                             #print(Legend_horz)
                             #for x in self.opponent_board:
                             #    print(x)
@@ -300,7 +301,7 @@ class BattleShip:
                         target_impossible2 = 0 
                         target_impossible3 = 0
                         target_impossible4 = 0
-                    
+   
                 else:
                     self.opponent_board[G1][G2] = 6
                 
@@ -308,8 +309,6 @@ class BattleShip:
                     #print("Game Complete")
                     #print(self.turn_count)
                     game = 0
-                    
-        # return self.opponent_board,self.turn_count
 
     def hit_or_miss(self, x, y , info):
         self.info = info
