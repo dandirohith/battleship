@@ -185,13 +185,11 @@ class BattleShip:
                     #print("Next G1= " + str(G1))
                     #print("Next G2= " + str(G2))
                     #time.sleep(1)
-                    
+
                     if Next_Coordinate == "Locked":
-                        
                         self.turn_count += 1
                         self.x = G1
                         self.y = G2
-
                         # attack at g1,g2
                         
                         # get info of attack at g1,g2 
@@ -328,9 +326,9 @@ prev_attack = []
 ships = [
  [3, 3, 3, 1],
  [4, 3, 4, 0],
- [5, 8, 4, 0]
- [1, 1, 5, 1]
- [9, 1, 5, 1] ]
+ [5, 8, 4, 0],
+ [1, 1, 5, 1],
+ [9, 1, 5, 1], ]
         
 parity_board = []
 temp = 1
